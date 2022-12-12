@@ -1,8 +1,8 @@
 CC=gcc
 
-NAME=libcstd<lib>.a
+NAME = libcstdmem.a
 
-SRC = src/
+SRC = src/lib.c
 
 CFLAGS 	+= -O3 -Ofast -Wall
 
@@ -28,7 +28,7 @@ debug: ${OBJ_DEBUG}
 	ar rc ${NAME} $^
 
 tests: debug
-	gcc ${CFLAGS_DEBUG} tests/main.c -L. -lcstdlist
+	gcc ${CFLAGS_DEBUG} tests/main.c -L. -lcstdmem
 
 clean:
 	${RM} ${OBJ} ${OBJ_DEBUG}
