@@ -63,11 +63,14 @@ smart_ptr *create_ptr(size_t size)
     s->ptr = malloc(size);
     if (s->ptr == NULL) {
         write(2, "Error: couldn't create pointer\n", 31);
+        free(s);
         return NULL;
     }
 
     s->size = size;
     s->destroy = &memory_destroy;
+    s->recreate = &memory_recreate;
+    s->set_str = &memory_set_str;
 
     return (s);
 }
